@@ -74,6 +74,10 @@ void loop()
       digitalWrite(pin8seg, !state8seg);
       state8seg = !state8seg; // cambia su estado
     }
+    if(digitalRead(pinBtn)){
+      delay(100);//antirebote
+      pausa = !pausa;
+    }
   }
 
   displayTime(); // muestra el tiempo
