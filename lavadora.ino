@@ -19,7 +19,7 @@ int state4seg = LOW;
 int state8seg = LOW;
 int segundosTiempo = tiempoMin * 60;
 unsigned long tInicial = 0;
-
+bool pausa = false;
 LedControl lc = LedControl(pinDIN, pinCLK, pinLOAD, 1); // pines del arduino DIN,CLK,LOAD,Cantidad de max7219
 
 void setup()
@@ -60,18 +60,22 @@ void loop()
   }
 
   /*Este codigo es para cambiar cada 4 u 8 segundos los estados de las salidas*/
-  if ((millis() - t4seg) >= 4000)
-  {
-    t4seg = millis();
-    digitalWrite(pin4seg, !state4seg);
-    state4seg = !state4seg; // cambia su estado
+  if (!pausa && tiempoMin > 0)
+  { // codigo para lavar
+    if ((millis() - t4seg) >= 4000)
+    {
+      t4seg = millis();
+      digitalWrite(pin4seg, !state4seg);
+      state4seg = !state4seg; // cambia su estado
+    }
+    if ((millis() - t8seg) >= 8000)
+    {
+      t8seg = millis();
+      digitalWrite(pin8seg, !state8seg);
+      state8seg = !state8seg; // cambia su estado
+    }
   }
-  if ((millis() - t8seg) >= 8000)
-  {
-    t8seg = millis();
-    digitalWrite(pin8seg, !state8seg);
-    state8seg = !state8seg; // cambia su estado
-  }
+
   displayTime(); // muestra el tiempo
 }
 
