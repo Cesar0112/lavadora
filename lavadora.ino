@@ -19,7 +19,7 @@ int state4seg = LOW;
 int state8seg = LOW;
 int segundosTiempo = tiempoMin * 60;
 unsigned long tInicial = 0;
-bool pausa = false;
+bool pausa = true;
 LedControl lc = LedControl(pinDIN, pinCLK, pinLOAD, 1); // pines del arduino DIN,CLK,LOAD,Cantidad de max7219
 
 void setup()
@@ -42,6 +42,7 @@ void loop()
   if (digitalRead(pinBtn))
   {
     delay(100);               // espera para evitar rebote
+    pausa = !pausa;
     if (digitalRead(pin5min)) // si se cumple significa que no puede cumplirse nadamas
     {
       tiempoMin = FIVE_MIN;
