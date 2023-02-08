@@ -85,9 +85,9 @@ void loop()
   }
   if (!pausa)//si no esta en pausa significa que esta lavando
   {
-    digitalWrite(LED_BUILTIN,HIGH);
+    digitalWrite(pinLed,HIGH);
   }else{
-    digitalWrite(LED_BUILTIN,LOW);
+    digitalWrite(pinLed,LOW);
   }
   displayTime(); // muestra el tiempo
 }
