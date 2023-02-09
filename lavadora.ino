@@ -67,18 +67,6 @@ void loop()
 
   /*Este codigo es para cambiar cada 4 u 8 segundos los estados de las salidas*/
 
-  if ((millis() - t4seg) >= 4000)
-  {
-    t4seg = millis();
-    digitalWrite(pin4seg, !state4seg);
-    state4seg = !state4seg; // cambia su estado
-  }
-  if ((millis() - t8seg) >= 8000)
-  {
-    t8seg = millis();
-    digitalWrite(pin8seg, !state8seg);
-    state8seg = !state8seg; // cambia su estado
-  }
   // se acaba el codigo para cambiar cada 4 u 8 segundos
 
   if (digitalRead(pinBtn))
@@ -115,5 +103,24 @@ void displayTime()
     tPrevReloj = millis();
 
     segundosTiempo--; // le quito un segundo
+  }
+}
+void lavar()
+{
+  //este codigo es para lavar
+  if (!pausa && tiempoMin > 0)
+  {
+    if ((millis() - t4seg) >= 4000)
+    {
+      t4seg = millis();
+      digitalWrite(pin4seg, !state4seg);
+      state4seg = !state4seg; // cambia su estado
+    }
+    if ((millis() - t8seg) >= 8000)
+    {
+      t8seg = millis();
+      digitalWrite(pin8seg, !state8seg);
+      state8seg = !state8seg; // cambia su estado
+    }
   }
 }
