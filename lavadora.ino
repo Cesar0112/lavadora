@@ -43,30 +43,10 @@ void setup()
 void loop()
 {
   // put your main code here, to run repeatedly:
-
-  if (digitalRead(pinBtn)) // si toca el boton para prender o despausar
-  {
-    delay(100);               // espera para evitar rebote
-    pausa = !pausa;           // despausar
-    if (digitalRead(pin5min)) // si se cumple significa que no puede cumplirse nadamas
-    {
-      tiempoMin = FIVE_MIN;
-      segundosTiempo = tiempoMin * 60; // convierte los minutos a segundos
-    }
-    else if (digitalRead(pin15min))
-    {
-      tiempoMin = FIFTEEN_MIN;
-      segundosTiempo = tiempoMin * 60;
-    }
-    else
-    { // si no se cumple ninguno de los anteriores significa que es 10 min
-      tiempoMin = TEN_MIN;
-      segundosTiempo = tiempoMin * 60;
-    }
-  }
-
+  escojerTiempo();
+  
   /*Este codigo es para cambiar cada 4 u 8 segundos los estados de las salidas*/
-
+  lavar();
   // se acaba el codigo para cambiar cada 4 u 8 segundos
 
   if (digitalRead(pinBtn))
@@ -121,6 +101,28 @@ void lavar()
       t8seg = millis();
       digitalWrite(pin8seg, !state8seg);
       state8seg = !state8seg; // cambia su estado
+    }
+  }
+}
+void escojerTiempo(){
+  if (digitalRead(pinBtn)) // si toca el boton para prender o despausar
+  {
+    delay(100);               // espera para evitar rebote
+    pausa = !pausa;           // despausar
+    if (digitalRead(pin5min)) // si se cumple significa que no puede cumplirse nadamas
+    {
+      tiempoMin = FIVE_MIN;
+      segundosTiempo = tiempoMin * 60; // convierte los minutos a segundos
+    }
+    else if (digitalRead(pin15min))
+    {
+      tiempoMin = FIFTEEN_MIN;
+      segundosTiempo = tiempoMin * 60;
+    }
+    else
+    { // si no se cumple ninguno de los anteriores significa que es 10 min
+      tiempoMin = TEN_MIN;
+      segundosTiempo = tiempoMin * 60;
     }
   }
 }
