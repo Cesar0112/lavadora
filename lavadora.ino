@@ -63,12 +63,10 @@ void loop() {
     digitalWrite(pin8seg,!state8seg);
     state8seg=!state8seg;//cambia su estado
   }
+  //se acaba el codigo para cambiar cada 4 u 8 segundos
   displayTime();//muestra el tiempo
 }
 
-void lavar(){
-
-}
 //funcion que muestra el tiempo en decremento por el display de 7 segmentos
 void displayTime() {
   int s;
