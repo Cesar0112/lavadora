@@ -3,7 +3,7 @@
 #define FIVE_MIN 5
 #define TEN_MIN 10
 #define FIFTEEN_MIN 15
-<<<<<<< HEAD
+
 int pin5min = 4;  // pin por el cual se va a leer la orden de 5 min
 int pin15min = 3; // pin por el cual se va a leer la orden de 15 min
 int tiempoMin = 0;
@@ -28,7 +28,7 @@ void setup()
   pinMode(pin4seg, OUTPUT);
   pinMode(pin8seg, OUTPUT);
   
-=======
+
 
 int pin5min = 4;   // pin por el cual se va a leer la orden de 5 min
 int pin15min = 3;  // pin por el cual se va a leer la orden de 15 min
@@ -52,17 +52,17 @@ LedControl lc = LedControl(pinDIN, pinCLK, pinLOAD, 1); // pines del arduino DIN
 void setup()
 {
   // put your setup code here, to run once:
->>>>>>> eeeb4434ad5206edfdb453f5f335b9f2bbd94809
+
   digitalWrite(pin5min, LOW);
   digitalWrite(pin15min, LOW);
   digitalWrite(pin4seg, state4seg);
   digitalWrite(pin8seg, state8seg);
-<<<<<<< HEAD
 
-=======
+
+
   pinMode(pin15min, INPUT);
   pinMode(pin5min, INPUT);
->>>>>>> eeeb4434ad5206edfdb453f5f335b9f2bbd94809
+
   lc.shutdown(0, false);
   lc.setIntensity(0, 8);
   lc.clearDisplay(0);
@@ -71,7 +71,7 @@ void setup()
 void loop()
 {
   // put your main code here, to run repeatedly:
-<<<<<<< HEAD
+
   if (digitalRead(pinBtn))
   {
     delay(100);               // espera para evitar rebote
@@ -79,7 +79,7 @@ void loop()
     {
       tiempoMin = FIVE_MIN;
       segundosTiempo = tiempoMin * 60;
-=======
+
   if (digitalRead(pinBtn)) // si toca el boton para prender o despausar
   {
     delay(100);               // espera para evitar rebote
@@ -88,7 +88,7 @@ void loop()
     {
       tiempoMin = FIVE_MIN;
       segundosTiempo = tiempoMin * 60; // convierte los minutos a segundos
->>>>>>> eeeb4434ad5206edfdb453f5f335b9f2bbd94809
+
     }
     else if (digitalRead(pin15min))
     {
@@ -103,7 +103,7 @@ void loop()
   }
 
   /*Este codigo es para cambiar cada 4 u 8 segundos los estados de las salidas*/
-<<<<<<< HEAD
+
   if ((millis() - t4seg) >= 4000)
   {
     t4seg = millis();
@@ -117,7 +117,7 @@ void loop()
     state8seg = !state8seg; // cambia su estado
   }
   // se acaba el codigo para cambiar cada 4 u 8 segundos
-=======
+
   // Y lavar
   if (!pausa && tiempoMin > 0)
   { // codigo para lavar
@@ -145,7 +145,7 @@ void loop()
   }else{
     digitalWrite(pinLed,LOW);
   }
->>>>>>> eeeb4434ad5206edfdb453f5f335b9f2bbd94809
+
   displayTime(); // muestra el tiempo
 }
 
@@ -161,15 +161,15 @@ void displayTime()
   lc.setDigit(0, 1, (s / 10) % 10, false);
   lc.setDigit(0, 2, m % 10, true);
   lc.setDigit(0, 3, (m / 10) % 10, false);
-<<<<<<< HEAD
+
   if (millis() - tInicial >= 1000)
   {
     tInicial = millis();
-=======
+
   if (millis() - tPrevReloj >= 1000)
   {
     tPrevReloj = millis();
->>>>>>> eeeb4434ad5206edfdb453f5f335b9f2bbd94809
+
     segundosTiempo--; // le quito un segundo
   }
 }
