@@ -27,6 +27,8 @@ void setup() {
   digitalWrite(pin8seg,state8seg);
   pinMode(pin15min,INPUT);
   pinMode(pin5min,INPUT);
+  pinMode(pin4seg,OUTPUT);
+  pinMode(pin8seg,OUTPUT);
   lc.shutdown(0, false);
   lc.setIntensity(0, 8);
   lc.clearDisplay(0);
